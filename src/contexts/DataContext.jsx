@@ -221,6 +221,58 @@ export const DataProvider = ({ children }) => {
           status: "Completed",
           featured: true,
           date: "2023-11-10"
+        },
+        {
+          id: 4,
+          title: "Find Jobs Website",
+          description: "A comprehensive job search template built with React.js and Tailwind CSS, focusing on user-friendly navigation and modern job board features.",
+          image: "/1.png",
+          category: "Web Development",
+          technologies: ["React", "Tailwind CSS", "JavaScript"],
+          githubUrl: "https://github.com/RohullahAminSarwari/Find-jobs-website-",
+          liveUrl: "#",
+          status: "Completed",
+          featured: false,
+          date: "2025-01-14"
+        },
+        {
+          id: 5,
+          title: "Scholar Management System",
+          description: "A Management Information System (MIS) designed for scholarship agencies to manage customers and community data effectively.",
+          image: "/screen.png",
+          category: "Software Development",
+          technologies: ["PHP", "Laravel", "MySQL"],
+          githubUrl: "https://github.com/RohullahAminSarwari/Scholar-Management-System-for-Scholarship-Agancy",
+          liveUrl: "#",
+          status: "Completed",
+          featured: true,
+          date: "2025-09-23"
+        },
+        {
+          id: 6,
+          title: "Transportation System",
+          description: "A specialized transportation management project featuring a modern UI built with HTML, CSS, and React.js integration.",
+          image: "/2.png",
+          category: "Web Development",
+          technologies: ["React", "Tailwind CSS", "HTML"],
+          githubUrl: "https://github.com/RohullahAminSarwari/Transportation",
+          liveUrl: "#",
+          status: "Completed",
+          featured: false,
+          date: "2025-01-14"
+        },
+        {
+          id: 7,
+          title: "Fruit Store Management",
+          description: "An efficient management system for fruit stores, handling inventory and sales with a focused software architecture.",
+          image: "/screen.png",
+          category: "Software Development",
+          technologies: ["PHP", "Laravel", "MySQL"],
+          githubUrl: "https://github.com/RohullahAminSarwari/Fruit-Store-Management-System",
+          liveUrl: "#",
+          status: "Completed",
+          featured: false,
+          date: "2025-08-06"
         }
       ];
       setProjects(defaultProjects);
