@@ -71,44 +71,69 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post, index) => (
-            <div 
+            <Link 
               key={post.id}
-              className="group bg-white dark:bg-gray-900 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              to={`/blog/${post.id}`}
+              className="group relative bg-white dark:bg-[#1e293b]/20 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 flex flex-col backdrop-blur-md"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative aspect-[16/9] overflow-hidden">
+              {/* Blog Image Container */}
+              <div className="relative aspect-[16/10] overflow-hidden m-3 rounded-[2rem]">
                 <img 
                   src={post.image || 'https://via.placeholder.com/800x450'} 
                   alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-md text-primary-600 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest border border-gray-100 dark:border-gray-800">
+                  <span className="px-3 py-1.5 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-md text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-white/20 shadow-lg">
                     {post.category}
                   </span>
                 </div>
+                
+                {/* Read indicator on hover */}
+                <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 shadow-xl scale-0 group-hover:scale-100 transition-transform duration-500">
+                    <i className="fas fa-book-open"></i>
+                  </div>
+                </div>
               </div>
               
-              <div className="p-8 space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                  <span>{post.date}</span>
-                  <span>{post.readTime}</span>
+              {/* Blog Content */}
+              <div className="p-8 pt-2 flex flex-col flex-grow space-y-4">
+                <div className="flex justify-between items-center text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                  <span className="flex items-center gap-1.5">
+                    <i className="far fa-calendar-alt text-blue-500"></i>
+                    {post.date}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <i className="far fa-clock text-blue-500"></i>
+                    {post.readTime}
+                  </span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3">
+                
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 font-medium flex-grow">
                   {post.excerpt}
                 </p>
-                <Link 
-                  to={`/blog/${post.id}`}
-                  className="inline-flex items-center text-primary-600 dark:text-primary-400 font-black text-xs uppercase tracking-widest hover:gap-2 transition-all"
-                >
-                  Read More <i className="fas fa-arrow-right ml-2"></i>
-                </Link>
+                
+                <div className="pt-4 flex items-center justify-between border-t border-gray-100 dark:border-white/5">
+                  <span className="text-blue-600 dark:text-blue-400 font-black text-[10px] uppercase tracking-widest flex items-center group-hover:gap-2 transition-all">
+                    Read Article <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                  </span>
+                  
+                  <div className="flex gap-1">
+                    {post.tags.slice(0, 2).map((tag, i) => (
+                      <span key={i} className="text-[9px] font-bold text-gray-400 dark:text-gray-500">#{tag}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

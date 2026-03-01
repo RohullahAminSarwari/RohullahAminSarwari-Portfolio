@@ -298,17 +298,25 @@ const Home = () => {
 
       {/* Feature Cards Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 pb-24 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { id: '01', title: 'Web Development', desc: 'Modern React.js solutions' },
-            { id: '02', title: 'Software Engineering', desc: 'Scalable backend systems' },
-            { id: '03', title: 'Architecture', desc: 'Clean & maintainable code' },
-            { id: '04', title: 'Deployment', desc: 'Optimized cloud workflows' }
+            { id: '01', title: 'Web Development', desc: 'Modern React.js solutions', icon: 'fa-laptop-code' },
+            { id: '02', title: 'Software Engineering', desc: 'Scalable backend systems', icon: 'fa-server' },
+            { id: '03', title: 'Architecture', desc: 'Clean & maintainable code', icon: 'fa-sitemap' },
+            { id: '04', title: 'Deployment', desc: 'Optimized cloud workflows', icon: 'fa-cloud-upload-alt' }
           ].map((card, i) => (
-            <div key={i} className="group p-6 bg-white dark:bg-[#1e293b]/20 hover:bg-gray-50 dark:hover:bg-[#1e293b]/40 border border-gray-100 dark:border-white/5 rounded-2xl shadow-sm hover:shadow-lg backdrop-blur-xl transition-all duration-500 hover:-translate-y-1">
-              <span className="text-blue-600 dark:text-blue-500 font-mono text-[10px] font-bold mb-2 block tracking-widest">{card.id}</span>
-              <h3 className="text-base font-black text-gray-900 dark:text-white mb-1">{card.title}</h3>
-              <p className="text-gray-500 dark:text-gray-400 text-[11px] font-medium leading-relaxed">{card.desc}</p>
+            <div key={i} className="group relative p-8 bg-white dark:bg-[#1e293b]/40 hover:bg-white dark:hover:bg-[#1e293b]/60 border border-gray-100 dark:border-white/10 rounded-[2.5rem] shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2">
+              <div className="flex justify-between items-start mb-6">
+                <span className="text-blue-600 dark:text-blue-500 font-mono text-xs font-black tracking-widest">{card.id}</span>
+                <div className="w-10 h-10 bg-blue-500/5 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-500">
+                  <i className={`fas ${card.icon}`}></i>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{card.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-relaxed">{card.desc}</p>
+              
+              {/* Subtle hover line */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full group-hover:w-1/3 transition-all duration-500"></div>
             </div>
           ))}
         </div>

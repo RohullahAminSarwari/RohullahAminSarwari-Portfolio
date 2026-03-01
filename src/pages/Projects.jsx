@@ -66,50 +66,78 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className={`group relative bg-white dark:bg-[#1e293b]/20 rounded-[2rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 animate-fade-in backdrop-blur-md`}
+              className="group relative bg-white dark:bg-[#1e293b]/20 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in backdrop-blur-md"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
+              {/* Project Image Container */}
+              <div className="relative aspect-[16/11] overflow-hidden m-3 rounded-[2rem]">
                 <img 
                   src={project.image || 'https://via.placeholder.com/800x500'} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/90 via-[#020617]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <div className="flex gap-3">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center text-white hover:bg-white hover:text-[#020617] transition-all border border-white/20 text-sm">
-                      <i className="fab fa-github"></i>
+                
+                {/* Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                  <div className="flex gap-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="w-12 h-12 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center text-white hover:bg-white hover:text-gray-950 transition-all border border-white/20 hover:scale-110 active:scale-95"
+                      title="View Code"
+                    >
+                      <i className="fab fa-github text-xl"></i>
                     </a>
                     {project.liveUrl && (
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center text-white hover:bg-white hover:text-[#020617] transition-all border border-white/20 text-sm">
-                        <i className="fas fa-external-link-alt"></i>
+                      <a 
+                        href={project.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="w-12 h-12 bg-blue-600 backdrop-blur-xl rounded-2xl flex items-center justify-center text-white hover:bg-blue-500 transition-all border border-blue-400/20 hover:scale-110 active:scale-95 shadow-lg shadow-blue-600/20"
+                        title="Live Demo"
+                      >
+                        <i className="fas fa-external-link-alt text-lg"></i>
                       </a>
                     )}
                   </div>
                 </div>
               </div>
               
-              <div className="p-6 space-y-3">
-                <span className="px-2 py-0.5 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 text-[9px] font-black uppercase tracking-widest border border-blue-500/20">
-                  {project.category}
-                </span>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed line-clamp-2">
+              {/* Project Content */}
+              <div className="p-6 pt-2 space-y-4">
+                <div>
+                  <span className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-500/20 mb-3">
+                    {project.category}
+                  </span>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                </div>
+                
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-2 font-medium">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {project.technologies.slice(0, 3).map((tech, i) => (
-                    <span key={i} className="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">
-                      #{tech}
+                
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.technologies.slice(0, 4).map((tech, i) => (
+                    <span 
+                      key={i} 
+                      className="px-2.5 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-lg text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tight border border-gray-100 dark:border-white/5 group-hover:border-blue-500/20 transition-colors duration-500"
+                    >
+                      {tech}
                     </span>
                   ))}
                 </div>
+              </div>
+              
+              {/* Subtle Decorative element */}
+              <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="w-12 h-12 bg-blue-500/10 rounded-full blur-2xl"></div>
               </div>
             </div>
           ))}

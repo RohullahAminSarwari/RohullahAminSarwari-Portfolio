@@ -208,26 +208,38 @@ const About = () => {
           <div className="bg-white dark:bg-[#1e293b]/20 rounded-[2rem] p-6 md:p-10 shadow-2xl border border-gray-100 dark:border-white/5 backdrop-blur-xl transition-colors duration-300">
             {activeTab === 'skills' && (
               <div className="animate-fade-in">
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {skills.map((skill, index) => (
-                    <div key={index} className="group p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/30 border border-gray-100 dark:border-white/5 hover:bg-white dark:hover:bg-gray-800/50 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
-                      <div className="flex items-center mb-4">
-                        <div className="w-10 h-10 bg-white dark:bg-[#020617] rounded-xl flex items-center justify-center shadow-sm border border-gray-100 dark:border-white/10 group-hover:scale-110 transition-transform duration-500">
-                          <i className={`${skill.icon} text-lg text-blue-600 dark:text-blue-400`}></i>
+                    <div 
+                      key={index} 
+                      className="group relative p-6 rounded-[2rem] bg-white dark:bg-[#1e293b]/20 border border-gray-100 dark:border-white/5 hover:bg-white dark:hover:bg-[#1e293b]/40 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:-translate-y-1"
+                    >
+                      <div className="flex items-center mb-6">
+                        <div className="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 rounded-2xl flex items-center justify-center border border-blue-100 dark:border-blue-500/20 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                          <i className={`${skill.icon} text-xl text-blue-600 dark:text-blue-400`}></i>
                         </div>
-                        <h3 className="text-sm font-bold text-gray-900 dark:text-white ml-3 tracking-tight">{skill.name}</h3>
+                        <div className="ml-4">
+                          <h3 className="text-sm font-bold text-gray-900 dark:text-white tracking-tight">{skill.name}</h3>
+                          <span className="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">Technical Skill</span>
+                        </div>
                       </div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center text-[9px] font-bold">
-                          <span className="text-gray-500 dark:text-gray-400 uppercase tracking-widest">Expertise</span>
+                      
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+                          <span className="text-gray-500 dark:text-gray-400">Proficiency</span>
                           <span className="text-blue-600 dark:text-blue-400">{skill.percentage}%</span>
                         </div>
-                        <div className="w-full bg-gray-200 dark:bg-[#020617] rounded-full h-1.5 overflow-hidden p-[1px]">
+                        <div className="w-full bg-gray-100 dark:bg-[#020617] rounded-full h-2 overflow-hidden p-[1.5px]">
                           <div 
-                            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000`}
-                            style={{ width: `${skill.percentage}%` }}
+                            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 delay-300`}
+                            style={{ width: isVisible ? `${skill.percentage}%` : '0%' }}
                           ></div>
                         </div>
+                      </div>
+
+                      {/* Hover effect highlight */}
+                      <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="w-8 h-8 bg-blue-500/5 rounded-full blur-xl"></div>
                       </div>
                     </div>
                   ))}
