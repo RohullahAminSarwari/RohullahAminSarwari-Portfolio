@@ -4,7 +4,7 @@ import { useData } from '../contexts/DataContext';
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState('skills');
-  const { customSkills } = useData();
+  const { customSkills, aboutData } = useData();
 
   useEffect(() => {
     setIsVisible(true);
@@ -31,7 +31,7 @@ const About = () => {
 
   const skills = [...defaultSkills, ...formattedCustomSkills];
 
-  const experiences = aboutData.experience && aboutData.experience.length > 0 ? aboutData.experience : [
+  const experiences = aboutData?.experience && aboutData.experience.length > 0 ? aboutData.experience : [
     {
       title: "Web & Software Developer",
       company: "Hushmand Shahar Technology",
@@ -60,7 +60,7 @@ const About = () => {
     }
   ];
 
-  const education = aboutData.education && aboutData.education.length > 0 ? aboutData.education : [
+  const education = aboutData?.education && aboutData.education.length > 0 ? aboutData.education : [
     {
       degree: "Bachelor of Science in Computer Science",
       institution: "Kabul Polytechnic University",
