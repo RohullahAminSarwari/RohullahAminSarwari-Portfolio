@@ -110,8 +110,8 @@ const Resume = () => {
 
         <div className="bg-white dark:bg-[#1e293b]/20 rounded-[2rem] shadow-2xl border border-gray-100 dark:border-white/5 overflow-hidden print:shadow-none print:border print:border-gray-200 print:rounded-none backdrop-blur-xl">
           {/* Resume Header */}
-          <div className="bg-gray-900 dark:bg-[#0f172a] p-6 sm:p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-center gap-8 print:bg-gray-900 print:text-white print:p-8">
-            <div className="space-y-4 text-center md:text-left print:text-left order-2 md:order-1">
+          <div className="bg-gray-900 dark:bg-[#0f172a] p-6 sm:p-8 md:p-12 text-white flex flex-col-reverse md:flex-row justify-between items-center gap-8 print:bg-gray-900 print:text-white print:p-8">
+            <div className="space-y-4 text-center md:text-left print:text-left">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter leading-none uppercase">ROHULLAH AMIN<br />SARWARI</h2>
               <p className="text-lg sm:text-xl font-bold text-blue-400 tracking-tight">Web & Software Developer</p>
               <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">
@@ -120,8 +120,8 @@ const Resume = () => {
                 <span className="flex items-center justify-center sm:justify-start gap-1.5"><i className="fas fa-phone text-blue-500"></i> {contactData.phone}</span>
               </div>
             </div>
-            <div className="shrink-0 order-1 md:order-2">
-              <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-3xl border-4 border-blue-500/30 p-1.5 overflow-hidden bg-gray-800 shadow-2xl md:rotate-3 hover:rotate-0 transition-transform duration-500 print:rotate-0 print:w-32 print:h-32">
+            <div className="shrink-0">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-3xl border-4 border-blue-500/30 p-1.5 overflow-hidden bg-gray-800 shadow-2xl md:rotate-3 hover:rotate-0 transition-transform duration-500 print:rotate-0 print:w-32 print:h-32">
                 <img src="/profile.jpg" alt="Rohullah Amin Sarwari" className="w-full h-full object-cover rounded-2xl transition-all duration-700" />
               </div>
             </div>
