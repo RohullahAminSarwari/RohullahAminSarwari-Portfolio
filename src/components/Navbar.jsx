@@ -50,15 +50,8 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Removed as requested */}
           <div className="flex items-center">
-            <Link 
-              to="/" 
-              className="group relative text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-purple-600 to-accent-600 dark:from-primary-400 dark:via-purple-400 dark:to-accent-400 hover:scale-105 transition-all duration-500"
-            >
-              <span className="relative z-10">Rohullah</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-400 to-accent-400 blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-            </Link>
           </div>
           
           {/* Desktop Navigation */}
