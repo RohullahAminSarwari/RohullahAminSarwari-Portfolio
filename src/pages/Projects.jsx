@@ -70,7 +70,8 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="group relative bg-white dark:bg-[#1e293b]/20 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in backdrop-blur-md"
+              onClick={() => setSelectedProject(project)}
+              className="group relative bg-white dark:bg-[#1e293b]/20 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in backdrop-blur-md cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Project Image Container */}
@@ -83,7 +84,7 @@ const Projects = () => {
                 
                 {/* Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                  <div className="flex gap-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="flex gap-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500" onClick={(e) => e.stopPropagation()}>
                     <a 
                       href={project.githubUrl} 
                       target="_blank" 
@@ -142,6 +143,88 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* Project Details Modal */}
+        {selectedProject && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 md:p-10">
+            <div 
+              className="absolute inset-0 bg-[#020617]/80 backdrop-blur-sm animate-fade-in"
+              onClick={() => setSelectedProject(null)}
+            ></div>
+            
+            <div className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0f172a] rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-white/10 overflow-y-auto animate-modal-up custom-scrollbar">
+              {/* Close Button */}
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-6 right-6 w-10 h-10 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors z-10"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+
+              <div className="flex flex-col lg:flex-row h-full">
+                {/* Image Section */}
+                <div className="lg:w-1/2 h-64 lg:h-auto sticky top-0">
+                  <img 
+                    src={selectedProject.image || 'https://via.placeholder.com/800x500'} 
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Content Section */}
+                <div className="lg:w-1/2 p-8 sm:p-10 space-y-8">
+                  <div className="space-y-4">
+                    <span className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-500/20">
+                      {selectedProject.category}
+                    </span>
+                    <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">
+                      {selectedProject.title}
+                    </h2>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">About Project</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed font-medium">
+                      {selectedProject.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech, i) => (
+                        <span key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-white/5 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-white/5">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-6 flex flex-wrap gap-4 border-t border-gray-100 dark:border-white/5">
+                    <a 
+                      href={selectedProject.githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex-1 min-w-[140px] py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-black/10"
+                    >
+                      <i className="fab fa-github text-base"></i> View Repository
+                    </a>
+                    {selectedProject.liveUrl && (
+                      <a 
+                        href={selectedProject.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex-1 min-w-[140px] py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-blue-600/20"
+                      >
+                        <i className="fas fa-external-link-alt"></i> Live Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-16 bg-gray-50 dark:bg-[#1e293b]/20 rounded-[2.5rem] border border-gray-100 dark:border-white/5 backdrop-blur-sm">
