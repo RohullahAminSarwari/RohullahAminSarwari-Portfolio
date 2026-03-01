@@ -103,26 +103,26 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Ahmad Farid",
-      role: "Project Manager",
-      company: "Tech Solutions",
-      content: "Rohullah delivered our project ahead of schedule with exceptional quality. His technical skills and professionalism are outstanding.",
+      name: "Muhammad Hakeem Wiyar",
+      role: "Lead Developer",
+      company: "KPU Website Project",
+      content: "Rohullah's contribution to the Kabul Polytechnic University website was pivotal. His ability to handle complex frontend challenges and maintain a clean architecture made our collaboration highly effective.",
       avatar: "/profile.jpg",
       rating: 5
     },
     {
-      name: "Subhan Agha",
-      role: "CEO",
-      company: "Digital Innovations",
-      content: "Working with Rohullah was a game-changer for our business. His innovative solutions helped us increase efficiency significantly.",
+      name: "Ahmad Waheb Arifi",
+      role: "Software Engineer",
+      company: "MIS Development Team",
+      content: "Working with Rohullah on the Management Information System (MIS) was a great experience. He is a dedicated developer who consistently delivers high-quality code and innovative solutions to technical problems.",
       avatar: "/profile.jpg",
       rating: 5
     },
     {
-      name: "Karimullah Safi",
-      role: "CTO",
-      company: "Startup Hub",
-      content: "Rohullah's expertise in web development is impressive. He transformed our vision into a robust, scalable application.",
+      name: "Mohammad Ozair",
+      role: "Backend Specialist",
+      company: "Alumni System Project",
+      content: "In our work on the Alumni system, Rohullah demonstrated exceptional skills in React.js and system integration. He is a reliable teammate who brings both technical expertise and a positive attitude to every project.",
       avatar: "/profile.jpg",
       rating: 5
     }
