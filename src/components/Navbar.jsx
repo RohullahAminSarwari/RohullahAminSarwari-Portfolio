@@ -34,13 +34,9 @@ const Navbar = () => {
     { name: 'About', path: '/about', icon: 'fas fa-user' },
     { name: 'Projects', path: '/projects', icon: 'fas fa-folder-open' },
     { name: 'Blog', path: '/blog', icon: 'fas fa-blog' },
-    { name: 'Contact', path: '/contact', icon: 'fas fa-envelope' }
+    { name: 'Contact', path: '/contact', icon: 'fas fa-envelope' },
+    { name: 'Admin', path: '/admin', icon: 'fas fa-user-shield' }
   ];
-
-  // Add admin link if user is in admin mode
-  if (isAdmin) {
-    navLinks.push({ name: 'Admin', path: '/admin/dashboard', icon: 'fas fa-cog' });
-  }
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${
@@ -82,19 +78,6 @@ const Navbar = () => {
               <div className="ml-4">
                 <ThemeToggle />
               </div>
-              
-              {/* Admin Access Link - Only visible with secret code */}
-              {showAdminAccess && (
-                <div className="ml-2">
-                  <Link
-                    to="/admin"
-                    className="text-gray-400 hover:text-blue-400 text-sm opacity-60 hover:opacity-100 transition-all duration-300 transform hover:scale-110"
-                    title="Admin Access"
-                  >
-                    <i className="fas fa-cog"></i>
-                  </Link>
-                </div>
-              )}
             </div>
           </div>
 
