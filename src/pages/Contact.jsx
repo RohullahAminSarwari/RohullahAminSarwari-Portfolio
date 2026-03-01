@@ -53,12 +53,17 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormStatus('sending');
-    // Simulate API call
+    
+    // Create mailto link
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:sarwarirohullahamin6@gmail.com?subject=${subject}&body=${body}`;
+    
     setTimeout(() => {
       setFormStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setFormStatus('idle'), 5000);
-    }, 2000);
+    }, 1000);
   };
 
   const handleChange = (e) => {
