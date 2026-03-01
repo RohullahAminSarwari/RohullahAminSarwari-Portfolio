@@ -102,7 +102,7 @@ const BlogPost = () => {
         readTime: "8 min read",
         category: "React",
         tags: ["React", "JavaScript", "Frontend", "Hooks"],
-        image: "/Photos Simples/1716635911147.jpg",
+        image: "/profile.jpg",
         author: {
           name: "Rohullah Amin Sarwari",
           avatar: "/profile.jpg",
