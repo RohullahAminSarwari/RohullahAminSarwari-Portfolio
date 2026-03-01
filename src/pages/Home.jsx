@@ -278,7 +278,7 @@ const Home = () => {
                   <img 
                     src="/profile.jpg" 
                     alt="Rohullah Amin Sarwari" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover/photo:scale-100" 
+                    className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover/photo:scale-100" 
                   />
                   
                   {/* Location Badge */}
@@ -382,7 +382,7 @@ const Home = () => {
                 </blockquote>
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 rounded-full border-2 border-primary-500 p-1 overflow-hidden">
-                    <img src={testimonials[activeTestimonial].avatar} alt="" className="w-full h-full object-cover rounded-full grayscale" />
+                    <img src={testimonials[activeTestimonial].avatar} alt="" className="w-full h-full object-cover rounded-full" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold">{testimonials[activeTestimonial].name}</h4>

@@ -146,7 +146,7 @@ const About = () => {
                 <img 
                   src="/profile.jpg" 
                   alt="Rohullah Amin Sarwari" 
-                  className="w-full h-auto object-cover rounded-[2.2rem] grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-auto object-cover rounded-[2.2rem] group-hover:scale-105 transition-all duration-700"
                 />
               </div>
             </div>

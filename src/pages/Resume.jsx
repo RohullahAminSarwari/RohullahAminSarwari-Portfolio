@@ -122,7 +122,7 @@ const Resume = () => {
             </div>
             <div className="shrink-0 order-1 md:order-2">
               <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-3xl border-4 border-blue-500/30 p-1.5 overflow-hidden bg-gray-800 shadow-2xl md:rotate-3 hover:rotate-0 transition-transform duration-500 print:rotate-0 print:w-32 print:h-32">
-                <img src="/profile.jpg" alt="Rohullah Amin Sarwari" className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700" />
+                <img src="/profile.jpg" alt="Rohullah Amin Sarwari" className="w-full h-full object-cover rounded-2xl transition-all duration-700" />
               </div>
             </div>
           </div>
