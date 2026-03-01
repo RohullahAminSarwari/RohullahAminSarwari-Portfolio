@@ -65,40 +65,69 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#020617] transition-colors duration-300 print:bg-white print:pt-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+      {/* Print-only Styles */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media print {
+          @page { margin: 1cm; size: portrait; }
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: white !important; }
+          .no-print { display: none !important; }
+          .print-shadow-none { box-shadow: none !important; border: 1px solid #e5e7eb !important; }
+          .print-text-black { color: black !important; }
+          .print-bg-gray { background-color: #f9fafb !important; }
+          .print-border-b { border-bottom: 1px solid #e5e7eb !important; }
+          .print-gap-4 { gap: 1rem !important; }
+          .print-p-6 { padding: 1.5rem !important; }
+          .print-m-0 { margin: 0 !important; }
+          .print-grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+          .print-hidden { display: none !important; }
+          .print-block { display: block !important; }
+          .print-rounded-none { border-radius: 0 !important; }
+        }
+      `}} />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 print:pt-0 print:px-0">
         {/* Header Actions */}
         <div className={`flex justify-between items-center mb-8 transition-all duration-1000 print:hidden ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight">
             Curriculum <span className="text-blue-600 dark:text-blue-400">Vitae</span>
           </h1>
-          <button 
-            onClick={handlePrint}
-            className="px-6 py-2 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-black text-xs flex items-center gap-2 hover:scale-105 transition-all shadow-lg"
-          >
-            <i className="fas fa-download"></i> DOWNLOAD CV
-          </button>
+          <div className="flex gap-3">
+            <a 
+              href="/cv.pdf"
+              download="Rohullah_Amin_Sarwari_CV.pdf"
+              className="px-6 py-2 bg-blue-600 text-white rounded-xl font-black text-xs flex items-center gap-2 hover:scale-105 transition-all shadow-lg"
+            >
+              <i className="fas fa-file-pdf"></i> DOWNLOAD PDF
+            </a>
+            <button 
+              onClick={handlePrint}
+              className="px-6 py-2 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-black text-xs flex items-center gap-2 hover:scale-105 transition-all shadow-lg"
+            >
+              <i className="fas fa-print"></i> PRINT CV
+            </button>
+          </div>
         </div>
 
-        <div className="bg-white dark:bg-[#1e293b]/20 rounded-[2rem] shadow-2xl border border-gray-100 dark:border-white/5 overflow-hidden print:shadow-none print:border-none print:rounded-none backdrop-blur-xl">
+        <div className="bg-white dark:bg-[#1e293b]/20 rounded-[2rem] shadow-2xl border border-gray-100 dark:border-white/5 overflow-hidden print:shadow-none print:border print:border-gray-200 print:rounded-none backdrop-blur-xl">
           {/* Resume Header */}
-          <div className="bg-gray-900 dark:bg-[#0f172a] p-8 md:p-12 text-white grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div className="md:col-span-2 space-y-4">
+          <div className="bg-gray-900 dark:bg-[#0f172a] p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-center gap-8 print:bg-gray-900 print:text-white print:p-8">
+            <div className="space-y-4 text-center md:text-left print:text-left">
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-none uppercase">ROHULLAH AMIN<br />SARWARI</h2>
               <p className="text-xl font-bold text-blue-400 tracking-tight">Web & Software Developer</p>
-              <div className="flex flex-wrap gap-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                 <span className="flex items-center gap-1.5"><i className="fas fa-map-marker-alt text-blue-500"></i> {contactData.location}</span>
                 <span className="flex items-center gap-1.5"><i className="fas fa-envelope text-blue-500"></i> {contactData.email}</span>
                 <span className="flex items-center gap-1.5"><i className="fas fa-phone text-blue-500"></i> {contactData.phone}</span>
               </div>
             </div>
-            <div className="hidden md:block">
-              <div className="w-36 h-36 rounded-[1.5rem] border-2 border-blue-500 p-1.5 overflow-hidden bg-gray-800">
-                <img src="/profile.jpg" alt="Rohullah Amin Sarwari" className="w-full h-full object-cover rounded-[1rem] grayscale" />
+            <div className="shrink-0">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-3xl border-4 border-blue-500/30 p-1.5 overflow-hidden bg-gray-800 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 print:rotate-0 print:w-32 print:h-32">
+                <img src="/profile.jpg" alt="Rohullah Amin Sarwari" className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700" />
               </div>
             </div>
           </div>
 
-          <div className="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-3 gap-12 print:p-8">
             {/* Left Column */}
             <div className="lg:col-span-2 space-y-12">
               <section className="space-y-4">
