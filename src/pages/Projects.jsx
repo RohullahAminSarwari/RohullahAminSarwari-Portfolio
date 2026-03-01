@@ -94,7 +94,7 @@ const Projects = () => {
                     >
                       <i className="fab fa-github text-xl"></i>
                     </a>
-                    {project.liveUrl && (
+                    {project.liveUrl && project.liveUrl !== '#' && (
                       <a 
                         href={project.liveUrl} 
                         target="_blank" 
@@ -209,7 +209,7 @@ const Projects = () => {
                     >
                       <i className="fab fa-github text-base"></i> View Repository
                     </a>
-                    {selectedProject.liveUrl && (
+                    {selectedProject.liveUrl && selectedProject.liveUrl !== '#' && (
                       <a 
                         href={selectedProject.liveUrl} 
                         target="_blank" 
